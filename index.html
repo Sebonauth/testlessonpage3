@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gradient Descent in Two Dimensions</title>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <style>
+        /* Basic styling for a clean layout */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            font-size: 150%; /* Increased font size to 150% */
+            margin: 0;
+            padding: 20px;
+        }
+        .lesson-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 18px;
+            padding: 50px 0;
+        }
+        .continue-button {
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            color: #fff;
+            background-color: #000;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+        .hidden-section {
+            display: none;
+            margin-top: 30px; /* Adds space between sections */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lesson-container">
+        <section>
+            <p>Now, let's explore gradient descent in two dimensions.</p>
+            <p>Function:</p>
+            <p>
+                \[
+                f(x, y) = x^2 + y^2
+                \]
+            </p>
+            <p>This function represents a bowl-shaped surface with a minimum at \((0, 0)\).</p>
+            <div class="image-placeholder">Placeholder Visual Aid</div>
+            <div class="continue-button" onclick="showNextSection('iteration1-section')">Continue</div>
+        </section>
+
+        <section id="iteration1-section" class="hidden-section">
+            <p>Starting from \((x_0, y_0) = (3, 4)\) and using \(\alpha = 0.1\).</p>
+            <p>Let's perform one gradient descent iteration.</p>
+            <p>Compute the gradients:</p>
+            <p>
+                \[
+                \frac{\partial f}{\partial x} = 2x \implies \frac{\partial f}{\partial x}(3, 4) = 2 \times 3 = 6
+                \]
+                \[
+                \frac{\partial f}{\partial y} = 2y \implies \frac{\partial f}{\partial y}(3, 4) = 2 \times 4 = 8
+                \]
+            </p>
+            <div class="continue-button" onclick="showNextSection('update-section')">Continue</div>
+        </section>
+
+        <section id="update-section" class="hidden-section">
+            <p>Update \(x\) and \(y\):</p>
+            <p>
+                \[
+                x_1 = x_0 - \alpha \frac{\partial f}{\partial x} = 3 - 0.1 \times 6 = 3 - 0.6 = 2.4
+                \]
+                \[
+                y_1 = y_0 - \alpha \frac{\partial f}{\partial y} = 4 - 0.1 \times 8 = 4 - 0.8 = 3.2
+                \]
+            </p>
+            <p>Answer: After one iteration, \((x, y) = (2.4, 3.2)\).</p>
+            <div class="image-placeholder">Placeholder Visual Aid</div>
+            <div class="continue-button" onclick="showNextSection('conclusion-section')">Continue</div>
+        </section>
+
+        <section id="conclusion-section" class="hidden-section">
+            <p>We successfully applied gradient descent in two dimensions.</p>
+        </section>
+    </div>
+
+    <script>
+        function showNextSection(sectionId) {
+            // Hide the clicked button
+            event.target.style.display = 'none';
+            
+            // Show the next section
+            const nextSection = document.getElementById(sectionId);
+            if (nextSection) {
+                nextSection.style.display = 'block';
+                // Smooth scroll to the revealed section
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+
+</body>
+</html>
